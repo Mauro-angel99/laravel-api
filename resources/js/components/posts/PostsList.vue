@@ -1,9 +1,9 @@
 <template>
     <section>
         <h3>Post</h3>
-        <ul>
-            <li v-for="post in posts" :key="post.id">{{ post.title }}</li>
-        </ul>
+        <div class="d-flex flex-wrap justify-content-between">
+            <PostCard v-for="post in posts" :key="post.id" :post="post" />
+        </div>
     </section>
 
 </template>
@@ -14,9 +14,14 @@
 
 <script>
 import Axios from 'axios';
+import PostCard from './PostCard.vue';
+
 
 export default {
     name: "PostList",
+    components: {
+        PostCard
+    },
     data() {
         return {
             posts: []
